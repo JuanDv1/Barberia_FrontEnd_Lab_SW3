@@ -1,0 +1,148 @@
+/* Importar fuente */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap');
+
+/* DEFINICIÓN DE VARIABLES DEL TEMA
+  Todo el estilo se basa en estas variables.
+*/
+:host {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  /* --- Paleta de Colores --- */
+  --clr-gold: #B9A36D;
+  --clr-dark: #1E201F;
+  
+  /* Variaciones de transparencia */
+  --clr-dark-trans: rgba(30, 32, 31, 0.95);
+  --clr-gold-trans-light: rgba(185, 163, 109, 0.2);
+  --clr-gold-trans-medium: rgba(185, 163, 109, 0.3);
+  --clr-gold-trans-strong: rgba(185, 163, 109, 0.8);
+
+  /* --- Tipografía --- */
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+}
+
+/* --- ESTILO GENERAL DE LA CARD DE FORMULARIO --- */
+
+/* Reset general de bordes redondeados */
+.card,
+.card-header,
+.btn {
+  border-radius: 0;
+}
+
+.card.bg-dark.text-white { /* Targeting the specific card for the form */
+  border: 2px solid var(--clr-gold);
+  background-color: var(--clr-dark-trans) !important;
+  color: var(--clr-gold) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  margin: 20px auto; /* Centra la tarjeta y le da algo de espacio */
+  max-width: 900px; /* Limita el ancho para que no sea demasiado grande */
+}
+
+.card-header {
+  background-color: var(--clr-dark) !important;
+  color: var(--clr-gold) !important;
+  border-bottom: 2px solid var(--clr-gold);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  padding: 1rem 1.25rem;
+}
+
+.card-body {
+  background-color: transparent; /* Permite que el fondo de la card se vea a través */
+  padding: 1.5rem;
+}
+
+/* --- ESTILO DE ELEMENTOS DEL FORMULARIO --- */
+
+.form-group.row {
+  margin-bottom: 1rem;
+  align-items: center; /* Centra verticalmente label e input */
+}
+
+.col-form-label {
+  color: var(--clr-gold);
+  font-family: var(--font-display);
+  font-weight: 400;
+  /* text-align: right; */ /* Removido para alineación natural a la izquierda */
+  padding-right: 15px;
+}
+
+.form-control {
+  background-color: #2a2c2b; /* Fondo oscuro para los inputs */
+  border: 1px solid var(--clr-gold-trans-medium);
+  color: #f8f9fa; /* Color de texto claro */
+  font-family: 'Arial', sans-serif; /* Puedes cambiar a Oswald si prefieres, pero Arial es más legible para inputs */
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-control:focus {
+  background-color: #343a40; /* Fondo un poco más claro al enfocar */
+  border-color: var(--clr-gold);
+  box-shadow: 0 0 0 0.2rem var(--clr-gold-trans-light);
+  color: #fff;
+}
+
+/* Estilo para el <textarea> */
+textarea.form-control {
+  resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+
+.form-text.text-muted {
+  color: var(--clr-gold-trans-strong) !important;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* --- ESTILO DE LOS BOTONES --- */
+
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-primary { /* Botón 'Crear' */
+  background-color: var(--clr-gold) !important;
+  border-color: var(--clr-gold) !important;
+  color: var(--clr-dark) !important;
+}
+
+.btn-primary:hover {
+  background-color: #d1b47b !important;
+  border-color: #d1b47b !important;
+  box-shadow: 0 4px 10px rgba(185, 163, 109, 0.4);
+}
+
+.btn-secondary { /* Botón 'Cancelar' */
+  background-color: #6c757d !important; /* Gris de Bootstrap */
+  border-color: #6c757d !important;
+  color: #fff !important;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268 !important;
+  border-color: #545b62 !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Espacio entre botones */
+.me-2 {
+  margin-right: 0.5rem !important;
+}
+
+/* Estilo para la vista previa de la imagen */
+.mt-2 {
+  margin-top: 0.5rem !important;
+}

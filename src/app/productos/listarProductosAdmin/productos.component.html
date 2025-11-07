@@ -1,0 +1,46 @@
+
+<div class="my-2 text-left">
+  <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/productos/crear']">  Crear Servicio
+  </button>
+  </div>
+  
+<div class="card text-white bg-primary mb-3">
+    <div class="card-header">Servicios</div>
+    <div class="card-body">
+      <h5 class="card-title">Listado de Servicios</h5>
+      <div *ngIf="productos?.length==0"	class="alert alert-info">
+        No hay registros en la base de datos
+      </div>
+
+      <table class="table table-bordered table-striped" *ngIf="productos.length>0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Categoria</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of productos">
+                <td>{{producto.id}}</td>
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.descripcion}}</td>
+                <td>{{producto.precio}}</td>
+                <td>{{producto.estado ? 'Disponible' : 'No disponible'}}</td>
+                <td>{{producto.objCategoria?.nombre}}</td>
+                <td>  
+                  <button  (click)="editarProducto(producto.id)" class="btn btn-warning">Editar  </button>                       
+                  <button (click)="eliminarProducto(producto.id)" class="btn btn-danger">Eliminar</button>
+                </td>
+            </tr> 
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  

@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap');
+
+.header-wrapper {
+  width: 100%;
+  background-color: #1E201F;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  padding: 25px 40px;
+  width: 100%;
+  background-color: #1E201F;
+  margin: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.container-fluid {
+  max-width: 100%;
+  padding: 0;
+}
+
+.profile-info {
+  text-align: left;
+}
+
+.profile-info h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #FEF6E1;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Oswald', 'Arial Narrow', 'Franklin Gothic Medium', sans-serif;
+}
+
+.profile-info h3 {
+  font-size: 1.2rem;
+  color: #B9A36D;
+  font-weight: 400;
+  margin: 5px 0;
+  letter-spacing: 1px;
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+}
+
+.profile-info p {
+  font-size: 1rem;
+  color: rgba(185, 163, 109, 0.8);
+  margin: 5px 0 0 0;
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-weight: 300;
+}
+
+.logo-container {
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 0;
+  border: 2px solid #B9A36D;
+  background-color: #1E201F;
+  padding: 5px;
+}
+
+/* Remover padding del body si es necesario */
+:host {
+  display: block;
+  margin: 0;
+  padding: 0;
+}

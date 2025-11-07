@@ -1,0 +1,215 @@
+/* Importar fuente */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap');
+
+/* DEFINICIÓN DE VARIABLES DEL TEMA
+  Todo el estilo se basa en estas variables.
+*/
+:host {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  /* --- Paleta de Colores --- */
+  --clr-gold: #B9A36D;
+  --clr-dark: #1E201F;
+  
+  /* Variaciones de transparencia */
+  --clr-dark-trans: rgba(30, 32, 31, 0.95);
+  --clr-gold-trans-light: rgba(185, 163, 109, 0.2);
+  --clr-gold-trans-medium: rgba(185, 163, 109, 0.3);
+  --clr-gold-trans-strong: rgba(185, 163, 109, 0.8);
+
+  /* --- Tipografía --- */
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+}
+
+/* --- ESTILOS GLOBALES Y DE FONDO --- */
+
+
+
+
+.container-fluid {
+  padding: 30px 20px;
+  position: relative;
+  z-index: 1; /* Asegura que el contenido esté por encima del overlay */
+}
+
+.page-title {
+  color: var(--clr-gold);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+/* --- RESET DE COMPONENTES BOOTSTRAP --- */
+
+/* Quitar bordes redondeados de todos los componentes del tema */
+.card,
+.card-header,
+.list-group-item,
+.producto-card,
+.badge,
+.alert-info {
+  border-radius: 0;
+}
+
+.row.g-3 {
+  margin: 0; /* Filas sin padding extra */
+}
+
+
+/* --- ESTILO DE TARJETAS (CARDS) --- */
+
+.card {
+  border: 2px solid var(--clr-gold);
+  background-color: var(--clr-dark-trans);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  /* El .card-body usa este mismo fondo por herencia,
+    no es necesario declararlo de nuevo.
+  */
+}
+
+.card-header {
+  background-color: var(--clr-dark) !important;
+  color: var(--clr-gold) !important;
+  border-bottom: 2px solid var(--clr-gold);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+
+/* --- LISTADO DE CATEGORÍAS --- */
+
+.list-group-item {
+  background-color: var(--clr-dark);
+  color: var(--clr-gold);
+  border: 1px solid var(--clr-gold-trans-medium);
+  font-family: var(--font-display);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.categoria-item:hover {
+  background-color: var(--clr-gold-trans-light);
+  transform: translateX(5px);
+  border-left: 3px solid var(--clr-gold);
+}
+
+.categoria-item.active {
+  background-color: var(--clr-gold-trans-medium);
+  color: var(--clr-gold);
+  font-weight: bold;
+  border-left: 4px solid var(--clr-gold);
+}
+
+.categoria-item.active i {
+  color: var(--clr-gold);
+}
+
+
+/* --- TARJETAS DE PRODUCTOS --- */
+
+.producto-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  background-color: var(--clr-dark);
+  border: 2px solid var(--clr-gold-trans-medium);
+  animation: fadeIn 0.4s ease;
+  /* Nota: .producto-card .card-body usa el fondo de .producto-card */
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(185, 163, 109, 0.4);
+  border-color: var(--clr-gold);
+}
+
+.producto-card .card-body {
+  color: var(--clr-gold);
+  background-color: var(--clr-dark); /* Asegura fondo sólido */
+}
+
+.producto-card .card-title {
+  color: var(--clr-gold);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  min-height: 2.5em; /* Para alinear títulos */
+  
+}
+
+.producto-card .card-text {
+  color: var(--clr-gold-trans-strong); 
+  font-size: 0.85rem;
+}
+
+
+.producto-imagen {
+  height: 150px;
+  object-fit: cover;
+  border-bottom: 2px solid var(--clr-gold);
+}
+
+
+/* --- BADGES Y ALERTAS --- */
+
+.badge {
+  font-family: var(--font-display);
+  padding: 5px 10px;
+}
+
+.bg-info {
+  background-color: var(--clr-gold-trans-medium) !important;
+  color: var(--clr-gold) !important;
+  border: 1px solid var(--clr-gold);
+}
+
+.bg-success {
+  background-color: rgba(40, 167, 69, 0.8) !important;
+}
+
+.bg-secondary {
+  background-color: rgba(108, 117, 125, 0.8) !important;
+}
+
+.alert-info {
+  background-color: var(--clr-gold-trans-light);
+  border: 2px solid var(--clr-gold);
+  color: var(--clr-gold);
+  font-family: var(--font-display);
+}
+
+
+/* --- ANIMACIÓN Y RESPONSIVE --- */
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@media (max-width: 768px) {
+  .page-background {
+    /* 'fixed' no funciona bien en móviles, se cambia a 'scroll' */
+    background-attachment: scroll;
+  }
+  
+  .container-fluid {
+    padding: 20px 15px;
+  }
+  
+  .page-title {
+    font-size: 1.5rem;
+  }
+}

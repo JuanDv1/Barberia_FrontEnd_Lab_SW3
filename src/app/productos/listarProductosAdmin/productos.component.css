@@ -1,0 +1,318 @@
+/* Importar fuente */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap');
+
+/* DEFINICIÓN DE VARIABLES DEL TEMA
+  Todo el estilo se basa en estas variables.
+*/
+:host {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  /* --- Paleta de Colores --- */
+  --clr-gold: #B9A36D;
+  --clr-dark: #1E201F;
+  
+  /* Variaciones de transparencia */
+  --clr-dark-trans: rgba(30, 32, 31, 0.95);
+  --clr-gold-trans-light: rgba(185, 163, 109, 0.2);
+  --clr-gold-trans-medium: rgba(185, 163, 109, 0.3);
+  --clr-gold-trans-strong: rgba(185, 163, 109, 0.8);
+
+  /* --- Tipografía --- */
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+
+  /* --- Colores de la tabla --- */
+  --table-header-bg: var(--clr-dark);
+  --table-header-color: var(--clr-gold);
+  --table-border-color: var(--clr-gold);
+  --table-row-bg-odd: var(--clr-dark);
+  --table-row-bg-even: #2a2c2b; /* Ligeramente diferente para las filas alternas */
+  --table-row-hover-bg: rgba(185, 163, 109, 0.1);
+  --table-text-color: var(--clr-gold-trans-strong);
+}
+
+/* --- ESTILOS GLOBALES Y DE FONDO --- */
+/* (Se mantiene igual que el anterior, solo se incluye para contexto) */
+
+.container-fluid {
+  padding: 30px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.page-title {
+  color: var(--clr-gold);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+/* --- RESET DE COMPONENTES BOOTSTRAP --- */
+
+/* Quitar bordes redondeados de todos los componentes del tema */
+.card,
+.card-header,
+.list-group-item,
+.producto-card,
+.badge,
+.alert-info,
+.btn { /* Se añade .btn aquí para los bordes */
+  border-radius: 0;
+}
+
+.row.g-3 {
+  margin: 0;
+}
+
+
+/* --- ESTILO DE TARJETAS (CARDS) --- */
+/* (Se mantiene igual que el anterior, solo se incluye para contexto) */
+.card {
+  border: 2px solid var(--clr-gold);
+  background-color: var(--clr-dark-trans);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+  background-color: var(--clr-dark) !important;
+  color: var(--clr-gold) !important;
+  border-bottom: 2px solid var(--clr-gold);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+
+/* --- LISTADO DE CATEGORÍAS (si aplica en esta vista) --- */
+/* (Se mantiene igual que el anterior, solo se incluye para contexto) */
+.list-group-item {
+  background-color: var(--clr-dark);
+  color: var(--clr-gold);
+  border: 1px solid var(--clr-gold-trans-medium);
+  font-family: var(--font-display);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.categoria-item:hover {
+  background-color: var(--clr-gold-trans-light);
+  transform: translateX(5px);
+  border-left: 3px solid var(--clr-gold);
+}
+
+.categoria-item.active {
+  background-color: var(--clr-gold-trans-medium);
+  color: var(--clr-gold);
+  font-weight: bold;
+  border-left: 4px solid var(--clr-gold);
+}
+
+.categoria-item.active i {
+  color: var(--clr-gold);
+}
+
+
+/* --- ESTILO DE LA TABLA DE PRODUCTOS --- */
+
+.my-2 {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+
+.btn-primary {
+  background-color: var(--clr-gold) !important;
+  border-color: var(--clr-gold) !important;
+  color: var(--clr-dark) !important; /* Texto oscuro en botón dorado */
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #d1b47b !important; /* Tono más claro de dorado */
+  border-color: #d1b47b !important;
+  box-shadow: 0 4px 10px rgba(185, 163, 109, 0.4);
+}
+
+/* Card específica para la tabla de productos */
+.card.text-white.bg-primary.mb-3 {
+  border: 2px solid var(--clr-gold);
+  background-color: var(--clr-dark-trans) !important; /* Usamos la variable para consistencia */
+  color: var(--clr-gold) !important;
+  margin-bottom: 1.5rem !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.card.text-white.bg-primary.mb-3 .card-header {
+  background-color: var(--clr-dark) !important;
+  color: var(--clr-gold) !important;
+  border-bottom: 2px solid var(--clr-gold);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card.text-white.bg-primary.mb-3 .card-body {
+  background-color: transparent; /* Permite que el fondo de la card brille a través */
+}
+
+.card.text-white.bg-primary.mb-3 .card-title {
+  color: var(--clr-gold);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+
+/* Alerta cuando no hay registros */
+.alert-info {
+  background-color: var(--clr-gold-trans-light);
+  border: 2px solid var(--clr-gold);
+  color: var(--clr-gold);
+  font-family: var(--font-display);
+  border-radius: 0;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+/* Estilo de la tabla */
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: var(--table-text-color); /* Color de texto general de la tabla */
+  border-collapse: collapse; /* Para que los bordes se vean continuos */
+}
+
+.table-bordered {
+  border: 1px solid var(--table-border-color);
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid var(--table-border-color);
+  padding: 0.75rem;
+  vertical-align: middle;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: var(--table-row-bg-odd);
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: var(--table-row-bg-even);
+}
+
+.table thead th {
+  background-color: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--table-border-color);
+}
+
+.table tbody tr:hover {
+  background-color: var(--table-row-hover-bg);
+}
+
+/* Botones de acción en la tabla */
+.btn-warning {
+  background-color: #ffc107; /* Amarillo estándar de Bootstrap para advertencia, o puedes cambiarlo a un dorado más claro */
+  border-color: #ffc107;
+  color: var(--clr-dark);
+  font-family: var(--font-display);
+  margin-right: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  border-color: #e0a800;
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Rojo estándar de Bootstrap para peligro */
+  border-color: #dc3545;
+  color: #fff;
+  font-family: var(--font-display);
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+/* Responsive de la tabla (opcional pero recomendado para tablas grandes) */
+@media (max-width: 768px) {
+  .table thead {
+    display: none; /* Oculta el encabezado de la tabla en pantallas pequeñas */
+  }
+  .table, .table tbody, .table tr, .table td {
+    display: block;
+    width: 100%;
+  }
+  .table tr {
+    margin-bottom: 0.625rem;
+    border: 1px solid var(--table-border-color);
+    background-color: var(--table-row-bg-odd); /* Fondo consistente en móvil */
+  }
+  .table td {
+    padding-left: 5%;
+    position: relative;
+    border: none;
+    border-bottom: 1px dashed var(--table-border-color);
+  }
+  .table td::before {
+    content: attr(data-label); /* Usa un atributo data-label para mostrar el título de la columna */
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+    color: var(--clr-gold);
+    font-family: var(--font-display);
+  }
+  .table td:last-child {
+    border-bottom: none;
+  }
+  .table td:first-child { /* Puedes estilizar el ID si quieres */
+    font-weight: bold;
+    color: var(--clr-gold);
+  }
+  .btn-primary {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+/* Animación de entrada (se mantiene igual, ya está en las variables globales) */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}

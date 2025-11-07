@@ -1,0 +1,100 @@
+<div class="page-background">
+  <div class="container-fluid">
+    <h2 class="page-title">
+      <i class="fas fa-cut"></i> Categorías de Servicios - Barbería
+    </h2>
+
+  <div class="row g-3">
+
+    <!-- Barra lateral (Categorías) -->
+    <aside class="col-12 col-md-3 col-lg-2">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0"><i class="fas fa-list"></i> Categorías</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item categoria-item" 
+              [class.active]="categoriaSeleccionada === null"
+              (click)="filtrarPorCategoria(null)"
+              style="cursor: pointer;">
+            <i class="fas fa-border-all"></i> Todos los servicios
+          </li>
+          <li *ngFor="let categoria of categorias" 
+              class="list-group-item categoria-item"
+              [class.active]="categoriaSeleccionada?.id === categoria.id"
+              (click)="filtrarPorCategoria(categoria)"
+              style="cursor: pointer;">
+            <i class="fas fa-tag"></i> {{categoria.nombre}}
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Sección de servicios -->
+    <main class="col-12 col-md-9 col-lg-10">
+      <div class="card">
+        <div class="card-header bg-dark text-white">
+          <h5 class="mb-0">
+            <i class="fas fa-shopping-bag"></i> 
+            {{ categoriaSeleccionada ? categoriaSeleccionada.nombre : 'Todos los servicios' }}
+          </h5>
+        </div>
+        <div class="card-body">
+          
+          <!-- Mensaje cuando no hay servicios -->
+          <div *ngIf="productosFiltrados.length === 0" class="alert alert-info text-center">
+            <i class="fas fa-info-circle"></i> No hay servicios disponibles en esta categoría
+          </div>
+
+          <!-- Grid de productos -->
+          <div class="row g-3">
+            <div *ngFor="let producto of productosFiltrados" 
+                 class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div class="card h-100 producto-card">
+                <!-- Imagen del producto -->
+                <img [src]="producto.imagen" 
+                     class="card-img-top producto-imagen" 
+                     [alt]="producto.nombre"
+                     style="height: 150px; object-fit: cover;">
+                
+                <div class="card-body d-flex flex-column">
+                  <!-- Nombre del producto -->
+                  <h6 class="card-title" [title]="producto.nombre">
+                    {{producto.nombre}}
+                  </h6>
+                  
+                  <!-- Descripción corta -->
+                  <p class="card-text small" style="font-size: 0.85rem;">
+                    {{producto.descripcion.substring(0, 50)}}{{producto.descripcion.length > 50 ? '...' : ''}}
+                  </p>
+                  
+                  <!-- Precio -->
+                  <p class="card-text fw-bold text-success mb-2">
+                    ${{producto.precio | number:'1.2-2'}}
+                  </p>
+                  
+                  <!-- Categoría -->
+                  <p class="card-text small mb-3">
+                    <span class="badge bg-info text-dark">
+                      <i class="fas fa-tag"></i> {{producto.objCategoria?.nombre || 'Sin categoría'}}
+                    </span>
+                  </p>
+                  
+                  <!-- Estado del producto -->
+                  <div class="mt-auto">
+                    <span class="badge" [class.bg-success]="producto.estado" [class.bg-secondary]="!producto.estado">
+                      {{ producto.estado ? 'Disponible' : 'No Disponible' }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+  </div>
+  </div>
+</div>
